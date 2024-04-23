@@ -8,11 +8,6 @@ const double width = 20.0 * PdfPageFormat.cm;
 const double width1 = 19.0 * PdfPageFormat.cm;
 //////////////////////////////////////////////
 const double height = 23.0 * PdfPageFormat.cm;
-// const double height1 = 4.0 * PdfPageFormat.cm;
-// const double height2 = 4.0 * PdfPageFormat.cm;
-// const double height3 = 4.0 * PdfPageFormat.cm;
-// const double height4 = 5.0 * PdfPageFormat.cm;
-// const double height5 = 4.0 * PdfPageFormat.cm;
 
 pw.Container schoolArBottomRow(
   pw.Font ttf,
@@ -46,7 +41,7 @@ pw.Container schoolArBottomRow(
 pw.SizedBox buildProfile(pw.Font ttf, Cvfile cvfile, CvFormat cvFormat) {
   return pw.SizedBox(
     width: width1,
-    height: cvFormat.profileLine * PdfPageFormat.cm, // height1,
+    height: cvFormat.profileLine * PdfPageFormat.cm,
     child: pw.Column(
         mainAxisAlignment: pw.MainAxisAlignment.start,
         crossAxisAlignment: pw.CrossAxisAlignment.end,
@@ -77,7 +72,7 @@ pw.SizedBox buildProfile(pw.Font ttf, Cvfile cvfile, CvFormat cvFormat) {
 pw.SizedBox buildEducationalQualifications(pw.Font ttf, Cvfile cvfile, CvFormat cvFormat) {
   return pw.SizedBox(
     width: width1,
-    height: cvFormat.educationalQualificationsLines * PdfPageFormat.cm, //height2,
+    height: cvFormat.educationalQualificationsLines * PdfPageFormat.cm,
     child: pw.Column(
       mainAxisAlignment: pw.MainAxisAlignment.start,
       crossAxisAlignment: pw.CrossAxisAlignment.end,
@@ -105,7 +100,7 @@ pw.SizedBox buildEducationalQualifications(pw.Font ttf, Cvfile cvfile, CvFormat 
 pw.SizedBox buildLanguages(pw.Font ttf, Cvfile cvfile, CvFormat cvFormat) {
   return pw.SizedBox(
     width: width1,
-    height: cvFormat.languagesLines * PdfPageFormat.cm, // height3,
+    height: cvFormat.languagesLines * PdfPageFormat.cm,
     child: pw.Column(
       mainAxisAlignment: pw.MainAxisAlignment.start,
       crossAxisAlignment: pw.CrossAxisAlignment.end,
@@ -134,7 +129,7 @@ pw.SizedBox buildLanguages(pw.Font ttf, Cvfile cvfile, CvFormat cvFormat) {
 pw.SizedBox buildExperienceAndSkills(pw.Font ttf, Cvfile cvfile, CvFormat cvFormat) {
   return pw.SizedBox(
     width: width1,
-    height: cvFormat.personalExperienceAndSkillsLines * PdfPageFormat.cm, //height4,
+    height: cvFormat.personalExperienceAndSkillsLines * PdfPageFormat.cm,
     child: pw.Column(
       mainAxisAlignment: pw.MainAxisAlignment.start,
       crossAxisAlignment: pw.CrossAxisAlignment.end,
@@ -162,7 +157,7 @@ pw.SizedBox buildExperienceAndSkills(pw.Font ttf, Cvfile cvfile, CvFormat cvForm
 pw.SizedBox buildInterestsAndHobbies(pw.Font ttf, Cvfile cvfile, CvFormat cvFormat) {
   return pw.SizedBox(
     width: width1,
-    height: cvFormat.interestsAndHobbiesLines * PdfPageFormat.cm, //height5,
+    height: cvFormat.interestsAndHobbiesLines * PdfPageFormat.cm,
     child: pw.Column(
         mainAxisAlignment: pw.MainAxisAlignment.start,
         crossAxisAlignment: pw.CrossAxisAlignment.end,

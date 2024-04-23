@@ -8,10 +8,6 @@ const double width = 20.0 * PdfPageFormat.cm;
 const double width1 = 19.0 * PdfPageFormat.cm;
 //////////////////////////////////////////////
 const double height = 23.0 * PdfPageFormat.cm;
-// const double height1 = 4.0 * PdfPageFormat.cm;
-// const double height2 = 6.0 * PdfPageFormat.cm;
-// const double height3 = 6.0 * PdfPageFormat.cm;
-// const double height4 = 6.0 * PdfPageFormat.cm;
 
 pw.Container skillEnBottomRow(
   pw.Font ttf,
@@ -47,7 +43,7 @@ pw.SizedBox buildProfile(
 ) {
   return pw.SizedBox(
     width: width1,
-    height: cvFormat.profileLine * PdfPageFormat.cm, //height1,
+    height: cvFormat.profileLine * PdfPageFormat.cm,
     child: pw.Column(
         mainAxisAlignment: pw.MainAxisAlignment.start,
         crossAxisAlignment: pw.CrossAxisAlignment.start,
@@ -56,7 +52,6 @@ pw.SizedBox buildProfile(
             alignment: const pw.Alignment(-0.9, 0),
             child: pw.Text(
               AppConstants.profileEnglish,
-              textDirection: pw.TextDirection.rtl,
               style: pw.TextStyle(font: ttf, fontSize: 20, fontWeight: pw.FontWeight.bold),
             ),
           ),
@@ -68,7 +63,6 @@ pw.SizedBox buildProfile(
               style: const pw.TextStyle(
                 color: PdfColors.black,
               ),
-              textDirection: pw.TextDirection.rtl,
             ),
           )
         ]),
@@ -82,7 +76,7 @@ pw.SizedBox buildExperienceAndSkills(
 ) {
   return pw.SizedBox(
     width: width1,
-    height: cvFormat.personalExperienceAndSkillsLines * PdfPageFormat.cm, //height2,
+    height: cvFormat.personalExperienceAndSkillsLines * PdfPageFormat.cm,
     child: pw.Column(
       mainAxisAlignment: pw.MainAxisAlignment.start,
       crossAxisAlignment: pw.CrossAxisAlignment.start,
@@ -98,7 +92,6 @@ pw.SizedBox buildExperienceAndSkills(
           alignment: pw.Alignment.topLeft,
           child: pw.Text(
             cvfile.personalExperienceAndSkills,
-            textDirection: pw.TextDirection.rtl,
           ),
         ),
       ],
@@ -113,7 +106,7 @@ pw.SizedBox buildLanguages(
 ) {
   return pw.SizedBox(
     width: width1,
-    height: cvFormat.languagesLines * PdfPageFormat.cm, //height3,
+    height: cvFormat.languagesLines * PdfPageFormat.cm,
     child: pw.Column(
       mainAxisAlignment: pw.MainAxisAlignment.start,
       crossAxisAlignment: pw.CrossAxisAlignment.start,
@@ -128,7 +121,6 @@ pw.SizedBox buildLanguages(
         pw.Divider(color: PdfColors.black),
         pw.Text(
           cvfile.languages,
-          textDirection: pw.TextDirection.rtl,
           style: const pw.TextStyle(
             color: PdfColors.black,
           ),
@@ -145,7 +137,7 @@ pw.SizedBox buildInterestsAndHobbies(
 ) {
   return pw.SizedBox(
     width: width1,
-    height: cvFormat.interestsAndHobbiesLines * PdfPageFormat.cm, //height4,
+    height: cvFormat.interestsAndHobbiesLines * PdfPageFormat.cm,
     child: pw.Column(
         mainAxisAlignment: pw.MainAxisAlignment.start,
         crossAxisAlignment: pw.CrossAxisAlignment.start,
@@ -162,7 +154,6 @@ pw.SizedBox buildInterestsAndHobbies(
             alignment: pw.Alignment.topLeft,
             child: pw.Text(
               cvfile.interestsAndHobbies,
-              textDirection: pw.TextDirection.rtl,
               style: const pw.TextStyle(
                 color: PdfColors.black,
               ),

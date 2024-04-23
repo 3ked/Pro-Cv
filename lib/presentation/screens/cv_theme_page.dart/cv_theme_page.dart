@@ -20,7 +20,6 @@ enum Menu {
   itemFive,
   itemSex,
   itemSeven,
-  itemEight,
 }
 
 class CvThemePage extends StatefulWidget {
@@ -168,19 +167,17 @@ class _CvThemePageState extends State<CvThemePage> {
                         if (item == Menu.itemThree) {
                           context.read<FontCubit>().toggleFont(font: FontAssets.bonaNova);
                         }
+
                         if (item == Menu.itemFour) {
-                          context.read<FontCubit>().toggleFont(font: FontAssets.notoKufiArabic);
-                        }
-                        if (item == Menu.itemFive) {
                           context.read<FontCubit>().toggleFont(font: FontAssets.mansalva);
                         }
-                        if (item == Menu.itemSex) {
+                        if (item == Menu.itemFive) {
                           context.read<FontCubit>().toggleFont(font: FontAssets.openSans);
                         }
-                        if (item == Menu.itemSeven) {
+                        if (item == Menu.itemSex) {
                           context.read<FontCubit>().toggleFont(font: FontAssets.eBGaramond);
                         }
-                        if (item == Menu.itemEight) {
+                        if (item == Menu.itemSeven) {
                           context.read<FontCubit>().toggleFont(font: FontAssets.gFSDidot);
                         }
                       },
@@ -199,22 +196,18 @@ class _CvThemePageState extends State<CvThemePage> {
                                 style: Theme.of(context).textTheme.bodySmall)),
                         PopupMenuItem(
                             value: Menu.itemFour,
-                            child: Text(FontFamily.notoKufiArabic,
-                                style: Theme.of(context).textTheme.bodySmall)),
-                        PopupMenuItem(
-                            value: Menu.itemFive,
                             child: Text(FontFamily.mansalva,
                                 style: Theme.of(context).textTheme.bodySmall)),
                         PopupMenuItem(
-                            value: Menu.itemSex,
+                            value: Menu.itemFive,
                             child: Text(FontFamily.openSans,
                                 style: Theme.of(context).textTheme.bodySmall)),
                         PopupMenuItem(
-                            value: Menu.itemSeven,
+                            value: Menu.itemSex,
                             child: Text(FontFamily.eBGaramond,
                                 style: Theme.of(context).textTheme.bodySmall)),
                         PopupMenuItem(
-                            value: Menu.itemEight,
+                            value: Menu.itemSeven,
                             child: Text(FontFamily.gFSDidot,
                                 style: Theme.of(context).textTheme.bodySmall)),
                       ],
@@ -224,16 +217,12 @@ class _CvThemePageState extends State<CvThemePage> {
                       child: Text.rich(
                           TextSpan(text: "${AppStrings.arabicLanguage.tr()} : ", children: [
                         TextSpan(
-                            text: isSupportArabic(getFontFamily(
-                              state: state,
-                            ))
+                            text: isSupportArabic(getFontFamily(state: state))
                                 ? AppStrings.support.tr()
                                 : AppStrings.notSupport.tr(),
                             style: TextStyle(
                               fontSize: FontSize.s22,
-                              color: isSupportArabic(getFontFamily(
-                                state: state,
-                              ))
+                              color: isSupportArabic(getFontFamily(state: state))
                                   ? ColorManager.green
                                   : ColorManager.error,
                             )),
@@ -244,15 +233,12 @@ class _CvThemePageState extends State<CvThemePage> {
                       child: Text.rich(
                           TextSpan(text: "${AppStrings.englishLanguage.tr()} : ", children: [
                         TextSpan(
-                            text: isSupportEnglish(getFontFamily(
-                              state: state,
-                            ))
+                            text: isSupportEnglish(getFontFamily(state: state))
                                 ? AppStrings.support.tr()
                                 : AppStrings.notSupport.tr(),
                             style: TextStyle(
-                              color: isSupportEnglish(getFontFamily(
-                                state: state,
-                              ))
+                              fontSize: FontSize.s22,
+                              color: isSupportEnglish(getFontFamily(state: state))
                                   ? ColorManager.green
                                   : ColorManager.error,
                             )),
@@ -917,43 +903,6 @@ class _CvThemePageState extends State<CvThemePage> {
           {required BuildContext context,
           required int value,
           required Function(Color) onColorChanged}) =>
-
-//       child: ColorPicker(
-//         pickerColor: pickerColor,
-//         onColorChanged: changeColor,
-//       ),
-//       // Use Material color picker:
-//       //
-//       // child: MaterialPicker(
-//       //   pickerColor: pickerColor,
-//       //   onColorChanged: changeColor,
-//       //   showLabel: true, // only on portrait mode
-//       // ),
-//       //
-//       // Use Block color picker:
-//       //
-//       // child: BlockPicker(
-//       //   pickerColor: currentColor,
-//       //   onColorChanged: changeColor,
-//       // ),
-//       //
-//       // child: MultipleChoiceBlockPicker(
-//       //   pickerColors: currentColors,
-//       //   onColorsChanged: changeColors,
-//       // ),
-//     ),
-//     actions: <Widget>[
-//       ElevatedButton(
-//         child: const Text('Got it'),
-//         onPressed: () {
-//           setState(() => currentColor = pickerColor);
-//           Navigator.of(context).pop();
-//         },
-//       ),
-//     ],
-//   ),
-// )
-
       showDialog(
         context: context,
         builder: (context) => SingleChildScrollView(
@@ -988,8 +937,6 @@ class _CvThemePageState extends State<CvThemePage> {
         return FontFamily.helveticaWorld;
       case FontAssets.bonaNova:
         return FontFamily.bonaNova;
-      case FontAssets.notoKufiArabic:
-        return FontFamily.notoKufiArabic;
       case FontAssets.mansalva:
         return FontFamily.mansalva;
       case FontAssets.openSans:
@@ -1006,8 +953,7 @@ class _CvThemePageState extends State<CvThemePage> {
   bool isSupportArabic(String font) {
     if (font == FontFamily.hacenTunisia ||
         font == FontFamily.helveticaWorld ||
-        font == FontFamily.bonaNova ||
-        font == FontFamily.notoKufiArabic) {
+        font == FontFamily.bonaNova) {
       return true;
     } else {
       return false;
@@ -1026,16 +972,6 @@ class _CvThemePageState extends State<CvThemePage> {
     } else {
       return false;
     }
-  }
-
-  void editText(
-      {required Function function,
-      required TextEditingController controller,
-      required String sectionTitle}) {
-    FocusManager.instance.primaryFocus?.unfocus();
-    function;
-    controller.clear();
-    showSnackBar(context, AppStrings.successSectionTitleMessage);
   }
 
   @override

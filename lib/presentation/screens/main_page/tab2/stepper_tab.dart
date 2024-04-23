@@ -5,7 +5,7 @@ import '../../../resources/strings_manager.dart';
 import '../../../resources/values_manager.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import '../../../../app/var.dart';
+import '../../../../app/variables.dart';
 
 class StepperTab extends StatefulWidget {
   const StepperTab({Key? key}) : super(key: key);

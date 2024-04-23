@@ -5,7 +5,7 @@ import 'package:file_manager/file_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:pdf/widgets.dart' as pw;
 
-import '../../../../data/data_source/internal_data_source.dart';
+import '../../../../data/data_source/local_data_source.dart';
 import '../../../resources/strings_manager.dart';
 import '../../../widgets/show_snack_bar.dart';
 
@@ -34,7 +34,7 @@ void buildDialogPdfName({
                 ElevatedButton(
                     onPressed: () async {
                       if (cvName != null) {
-                        Directory dir = await InternalDataSourceImpl().getLocalPath;
+                        Directory dir = await LocalDataSourceImpl().getLocalPath;
                         List<FileSystemEntity> entities = dir.listSync();
                         for (int i = 0; i < entities.length; i++) {
                           if (FileManager.basename(entities[i], false) == "$cvName.pdf") {
@@ -44,7 +44,7 @@ void buildDialogPdfName({
                           }
                         }
                         Navigator.pop(context);
-                        await InternalDataSourceImpl().saveFile(cvName!, pdf);
+                        await LocalDataSourceImpl().saveFile(cvName!, pdf);
                         showSnackBar(contextPage, AppStrings.saveDone);
                       }
                     },

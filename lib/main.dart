@@ -7,7 +7,7 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'app/di.dart';
-import 'data/data_source/internal_data_source.dart';
+import 'data/data_source/local_data_source.dart';
 import 'presentation/common/logic/cubit/language_app/language_app_cubit.dart';
 import 'presentation/common/logic/cubit/theme/theme_cubit.dart';
 import 'presentation/resources/language_manager.dart';
@@ -20,9 +20,9 @@ Future<void> main() async {
   await EasyLocalization.ensureInitialized();
   final storage =
       await HydratedStorage.build(storageDirectory: await getApplicationDocumentsDirectory());
-  await InternalDataSourceImpl().requestPermission(Permission.storage);
-  await InternalDataSourceImpl().requestPermission(Permission.manageExternalStorage);
-  await InternalDataSourceImpl().createFolder();
+  await LocalDataSourceImpl().requestPermission(Permission.storage);
+  await LocalDataSourceImpl().requestPermission(Permission.manageExternalStorage);
+  await LocalDataSourceImpl().createFolder();
   await initAppModule();
   HydratedBlocOverrides.runZoned(
       () => runApp(EasyLocalization(
@@ -64,9 +64,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-        designSize:
-            //const Size(360, 690),
-            const Size(480, 800),
+        designSize: const Size(480, 800),
         splitScreenMode: true,
         minTextAdapt: true,
         builder: (context, child) {

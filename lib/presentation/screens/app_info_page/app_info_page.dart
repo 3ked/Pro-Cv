@@ -1,3 +1,4 @@
+import 'package:cv_pdf/presentation/resources/color_manager.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -29,10 +30,10 @@ class AppInfoPage extends StatelessWidget {
               padding: EdgeInsets.symmetric(vertical: AppPadding.p15H),
               child: CircleAvatar(
                 radius: AppSize.s105R,
-                backgroundColor: Theme.of(context).iconTheme.color,
+                backgroundColor: ColorManager.darkGrey,
                 child: CircleAvatar(
                   radius: AppSize.s100R,
-                  backgroundImage: const AssetImage(ImageAssets.emptyProfile),
+                  backgroundImage: const AssetImage(ImageAssets.logo),
                 ),
               ),
             ),
@@ -48,23 +49,29 @@ class AppInfoPage extends StatelessWidget {
                       return Dialog(
                           child: Row(
                         children: [
+                          // whatsapp
                           IconButton(
                             onPressed: () {
                               openUrl(
                                   context: context,
                                   scheme: "https",
                                   host: "wa.me",
-                                  path: "/+963938943188");
+                                  path: "/message/BHZRKQVH5I4YB1");
                             },
                             icon: const Icon(Icons.whatsapp),
                           ),
+                          // telegram
                           IconButton(
                             onPressed: () {
                               openUrl(
-                                  context: context, scheme: "https", host: "t.me", path: "/JHRTEC");
+                                  context: context,
+                                  scheme: "https",
+                                  host: "t.me",
+                                  path: "/EngAliJoher");
                             },
                             icon: const Icon(Icons.telegram),
                           ),
+                          // facebook
                           IconButton(
                             onPressed: () {
                               openUrl(
@@ -75,10 +82,23 @@ class AppInfoPage extends StatelessWidget {
                             },
                             icon: const Icon(Icons.facebook),
                           ),
+                          // website
                           IconButton(
                             onPressed: () {
                               openUrl(
-                                  context: context, scheme: "mailto", path: "ali18869@gmail.com");
+                                  context: context,
+                                  scheme: "https",
+                                  host: "engalijoher.blogspot.com");
+                            },
+                            icon: const Icon(Icons.blur_circular_outlined),
+                          ),
+                          // gmail
+                          IconButton(
+                            onPressed: () {
+                              openUrl(
+                                  context: context,
+                                  scheme: "mailto",
+                                  path: "eng.alijoher@gmail.com");
                             },
                             icon: const Icon(Icons.email),
                           ),

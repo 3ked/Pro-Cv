@@ -30,9 +30,6 @@ class _RateAppInitWidgetState extends State<RateAppInitWidget> {
         setState(() {
           this.rateMyApp = rateMyApp;
         });
-        // if (rateMyApp.shouldOpenDialog) {
-        // rateMyApp.showStarRateDialog(context);
-        // }
       },
       builder: (context) => widget.builder(rateMyApp));
 }

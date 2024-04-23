@@ -50,7 +50,7 @@ pw.SizedBox buildProfile(
 ) {
   return pw.SizedBox(
     width: width1,
-    height: cvFormat.profileLine * PdfPageFormat.cm, //height2,
+    height: cvFormat.profileLine * PdfPageFormat.cm,
     child: pw.Column(
         mainAxisAlignment: pw.MainAxisAlignment.start,
         crossAxisAlignment: pw.CrossAxisAlignment.start,
@@ -59,19 +59,17 @@ pw.SizedBox buildProfile(
             alignment: const pw.Alignment(-0.9, 0),
             child: pw.Text(
               AppConstants.profileEnglish,
-              textDirection: pw.TextDirection.rtl,
               style: pw.TextStyle(font: ttf, fontSize: 20, fontWeight: pw.FontWeight.bold),
             ),
           ),
           pw.Divider(color: PdfColors.black),
           pw.Align(
-            alignment: pw.Alignment.topRight,
+            alignment: pw.Alignment.topLeft,
             child: pw.Text(
               cvfile.profile,
               style: const pw.TextStyle(
                 color: PdfColors.black,
               ),
-              textDirection: pw.TextDirection.rtl,
             ),
           )
         ]),
@@ -85,7 +83,7 @@ pw.SizedBox buildEducationalQualifications(
 ) {
   return pw.SizedBox(
     width: width1,
-    height: cvFormat.educationalQualificationsLines * PdfPageFormat.cm, //height2,
+    height: cvFormat.educationalQualificationsLines * PdfPageFormat.cm,
     child: pw.Column(
       mainAxisAlignment: pw.MainAxisAlignment.start,
       crossAxisAlignment: pw.CrossAxisAlignment.start,
@@ -98,10 +96,9 @@ pw.SizedBox buildEducationalQualifications(
             )),
         pw.Divider(color: PdfColors.black),
         pw.Align(
-          alignment: pw.Alignment.centerLeft,
+          alignment: pw.Alignment.topLeft,
           child: pw.Text(
             cvfile.educationalQualifications,
-            textDirection: pw.TextDirection.rtl,
           ),
         ),
       ],
@@ -116,7 +113,7 @@ pw.SizedBox buildLanguages(
 ) {
   return pw.SizedBox(
     width: width1,
-    height: cvFormat.languagesLines * PdfPageFormat.cm, //height3,
+    height: cvFormat.languagesLines * PdfPageFormat.cm,
     child: pw.Column(
       mainAxisAlignment: pw.MainAxisAlignment.start,
       crossAxisAlignment: pw.CrossAxisAlignment.start,
@@ -131,7 +128,6 @@ pw.SizedBox buildLanguages(
         pw.Divider(color: PdfColors.black),
         pw.Text(
           cvfile.languages,
-          textDirection: pw.TextDirection.rtl,
           style: const pw.TextStyle(
             color: PdfColors.black,
           ),
@@ -148,7 +144,7 @@ pw.SizedBox buildExperienceAndSkills(
 ) {
   return pw.SizedBox(
     width: width1,
-    height: cvFormat.personalExperienceAndSkillsLines * PdfPageFormat.cm, //height4,
+    height: cvFormat.personalExperienceAndSkillsLines * PdfPageFormat.cm,
     child: pw.Column(
       mainAxisAlignment: pw.MainAxisAlignment.start,
       crossAxisAlignment: pw.CrossAxisAlignment.start,
@@ -164,7 +160,6 @@ pw.SizedBox buildExperienceAndSkills(
           alignment: pw.Alignment.topLeft,
           child: pw.Text(
             cvfile.personalExperienceAndSkills,
-            textDirection: pw.TextDirection.rtl,
           ),
         ),
       ],
@@ -179,7 +174,7 @@ pw.SizedBox buildInterestsAndHobbies(
 ) {
   return pw.SizedBox(
     width: width1,
-    height: cvFormat.interestsAndHobbiesLines * PdfPageFormat.cm, //height5,
+    height: cvFormat.interestsAndHobbiesLines * PdfPageFormat.cm,
     child: pw.Column(
         mainAxisAlignment: pw.MainAxisAlignment.start,
         crossAxisAlignment: pw.CrossAxisAlignment.start,
@@ -196,7 +191,6 @@ pw.SizedBox buildInterestsAndHobbies(
             alignment: pw.Alignment.topLeft,
             child: pw.Text(
               cvfile.interestsAndHobbies,
-              textDirection: pw.TextDirection.rtl,
               style: const pw.TextStyle(
                 color: PdfColors.black,
               ),

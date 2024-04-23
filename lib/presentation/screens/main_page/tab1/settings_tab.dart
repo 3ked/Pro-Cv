@@ -2,7 +2,6 @@
 import 'package:cv_pdf/presentation/widgets/rate_app_init_widget.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:launch_review/launch_review.dart';
 import 'package:rate_my_app/rate_my_app.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -143,8 +142,6 @@ class _SettingsTabState extends State<SettingsTab> {
               style: Theme.of(context).textTheme.bodyLarge,
             ),
             onTap: () async {
-              //https://pro-cv-pdf.blogspot.com/p/terms-and-privacy-policy.html
-              //https://docs.google.com/document/d/1Yxe_sXftcT1IU3-cOTnRkXHRK66PWZ-eICpEZjgYyfE/edit?usp=sharing
               final Uri _url = Uri(
                 scheme: "https",
                 host: "pro-cv-pdf.blogspot.com",
@@ -197,11 +194,37 @@ class _SettingsTabState extends State<SettingsTab> {
     return TextButton(
         onPressed: () {
           Navigator.of(context).pop();
-          LaunchReview.launch(androidAppId: "com.pro_cv.pdf");
+          //LaunchReview.launch(androidAppId: "com.pro_cv.pdf");
+          openUrl(context: context, scheme: "https", host: "pro-cv.uptodown.com", path: "/android");
         },
         child: Text(AppStrings.ok.tr()));
   }
 
   Widget buildCancelButton(BuildContext context, RateMyApp rateMyApp) =>
       RateMyAppNoButton(rateMyApp, text: AppStrings.back.tr());
+
+  void openUrl(
+      {required BuildContext context, required String? scheme, String? host, String? path}) async {
+    final Uri _url = Uri(
+      scheme: scheme,
+      host: host,
+      path: path,
+    );
+    try {
+      if (await canLaunchUrl(_url)) {
+        await launchUrl(
+          _url,
+          mode: LaunchMode.externalApplication,
+          webViewConfiguration: const WebViewConfiguration(
+            enableJavaScript: false,
+            enableDomStorage: false,
+          ),
+        );
+      } else {
+        throw "${AppStrings.notLaunch.tr()} $_url";
+      }
+    } catch (e) {
+      showSnackBar(context, e.toString());
+    }
+  }
 }

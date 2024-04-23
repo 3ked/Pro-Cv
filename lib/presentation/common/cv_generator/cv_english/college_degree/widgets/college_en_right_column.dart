@@ -6,12 +6,7 @@ import '../../../../../resources/constants_manager.dart';
 
 const double width = 13.6 * PdfPageFormat.cm;
 const double width1 = 13.0 * PdfPageFormat.cm;
-
 const double height = 29.0 * PdfPageFormat.cm;
-//const double height1 = 4.0 * PdfPageFormat.cm;
-// const double height2 = 10.0 * PdfPageFormat.cm;
-// const double height3 = 9.0 * PdfPageFormat.cm;
-// const double height4 = 5.0 * PdfPageFormat.cm;
 
 pw.Container collegeEnRightColumn(
   pw.Font ttf,
@@ -47,23 +42,19 @@ pw.SizedBox buildFullName(
 ) {
   return pw.SizedBox(
       width: width1,
-      height: cvFormat.profileLine * PdfPageFormat.cm, //height1,
+      height: cvFormat.profileLine * PdfPageFormat.cm,
       child: pw.Column(mainAxisAlignment: pw.MainAxisAlignment.start, children: [
         pw.Align(
           alignment: pw.Alignment.topLeft,
           child: pw.Text(
             cvfile.fullName,
-            textDirection: pw.TextDirection.rtl,
             style: pw.TextStyle(
                 font: ttf, fontSize: cvFormat.fullNameFontSize, fontWeight: pw.FontWeight.bold),
           ),
         ),
         pw.Align(
           alignment: pw.Alignment.topLeft,
-          child: pw.Text(
-            cvfile.profile,
-            textDirection: pw.TextDirection.rtl,
-          ),
+          child: pw.Text(cvfile.profile, style: const pw.TextStyle(color: PdfColors.grey800)),
         )
       ]));
 }
@@ -75,7 +66,7 @@ pw.SizedBox buildWorkExperience(
 ) {
   return pw.SizedBox(
       width: width1,
-      height: cvFormat.workExperienceLines * PdfPageFormat.cm, //height2,
+      height: cvFormat.workExperienceLines * PdfPageFormat.cm,
       child: pw.Column(mainAxisAlignment: pw.MainAxisAlignment.start, children: [
         pw.Align(
             alignment: const pw.Alignment(-0.8, 0),
@@ -85,10 +76,9 @@ pw.SizedBox buildWorkExperience(
             )),
         pw.Divider(),
         pw.Align(
-          alignment: pw.Alignment.centerLeft,
+          alignment: pw.Alignment.topLeft,
           child: pw.Text(
             cvfile.workExperience,
-            textDirection: pw.TextDirection.rtl,
           ),
         ),
       ]));
@@ -111,10 +101,9 @@ pw.SizedBox buildEducationalQualifications(
             )),
         pw.Divider(),
         pw.Align(
-          alignment: pw.Alignment.centerLeft,
+          alignment: pw.Alignment.topLeft,
           child: pw.Text(
             cvfile.educationalQualifications,
-            textDirection: pw.TextDirection.rtl,
           ),
         ),
       ]));
@@ -137,10 +126,9 @@ pw.SizedBox buildExperienceAndSkills(
           )),
       pw.Divider(),
       pw.Align(
-        alignment: pw.Alignment.bottomLeft,
+        alignment: pw.Alignment.topLeft,
         child: pw.Text(
           cvfile.personalExperienceAndSkills,
-          textDirection: pw.TextDirection.rtl,
         ),
       ),
     ]),

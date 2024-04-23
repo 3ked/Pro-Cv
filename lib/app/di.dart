@@ -10,7 +10,6 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../data/data_source/local_data_source.dart';
 
 final instance = GetIt.instance;
 
@@ -38,9 +37,6 @@ Future<void> initAppModule() async {
 // remote data source
   instance.registerLazySingleton<RemoteDataSource>(
       () => RemoteDataSourceImpl(instance<AppServiceClient>()));
-
-// local data source
-  instance.registerLazySingleton<LocalDataSource>(() => LocalDataSourceImpl());
 
 // repository
   instance.registerLazySingleton<Repository>(() => RepositoryImpl(instance(), instance()));

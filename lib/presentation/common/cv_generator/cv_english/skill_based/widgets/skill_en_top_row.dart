@@ -114,7 +114,6 @@ pw.SizedBox buildImage(
                       style: pw.TextStyle(
                         color: pdfFontColor,
                       ),
-                      textDirection: pw.TextDirection.rtl,
                     ),
                   ]),
             )
@@ -131,10 +130,9 @@ pw.SizedBox buildFullName(
     width: width2,
     height: height2,
     child: pw.Align(
-      alignment: pw.Alignment.centerLeft,
+      alignment: pw.Alignment.topLeft,
       child: pw.Text(
         cvfile.fullName,
-        textDirection: pw.TextDirection.rtl,
         style: pw.TextStyle(
             font: ttf,
             fontSize: cvFormat.fullNameFontSize,

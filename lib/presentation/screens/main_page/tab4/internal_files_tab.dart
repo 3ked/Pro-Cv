@@ -12,7 +12,7 @@ import 'package:file_manager/file_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:share_plus/share_plus.dart';
-import '../../../../data/data_source/internal_data_source.dart';
+import '../../../../data/data_source/local_data_source.dart';
 import '../../../resources/strings_manager.dart';
 import '../../../widgets/show_snack_bar.dart';
 
@@ -158,7 +158,7 @@ class _InternalFilesTabState extends State<InternalFilesTab> {
       await Future.delayed(const Duration(milliseconds: 1000));
     }
     _keyRefresh.currentState?.show();
-    Directory dir = await InternalDataSourceImpl().getLocalPath;
+    Directory dir = await LocalDataSourceImpl().getLocalPath;
     List<FileSystemEntity> entities = dir.listSync();
     if (this.entities != entities) {
       setState(() {
@@ -199,7 +199,7 @@ class _InternalFilesTabState extends State<InternalFilesTab> {
     required FileSystemEntity entity,
   }) async {
     String? name;
-    Directory dir = await InternalDataSourceImpl().getLocalPath;
+    Directory dir = await LocalDataSourceImpl().getLocalPath;
     String path = dir.path;
     showDialog(
         context: context,

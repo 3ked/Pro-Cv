@@ -1,65 +1,84 @@
-import '../../domain/models/models.dart';
-
-const cacheHomeKey = "CACHE_HOME_KEY";
-const cacheHomeInterval = 60000; // 1 minute cache in millis
-const cacheStoreDetailsKey = "CACHE_STORE_DETAILS_KEY";
-const cacheStoreDetailsInterval = 60000; // 1 minute cache in millis
+import 'dart:io';
+import 'package:path_provider/path_provider.dart';
+import 'package:pdf/widgets.dart' as pw;
+import 'package:permission_handler/permission_handler.dart';
 
 abstract class LocalDataSource {
-  Future<Item> getHomeData();
-
-  Future<void> saveHomeToCache(Item homeResponse);
-
-  void clearCache();
-  void removeFromCache(String key);
+  Future createFolder();
+  Future<File> saveDocument({required pw.Document pdf});
+  Future saveFile(String fileName, pw.Document pdf);
+  Future<bool> requestPermission(Permission permissions);
+  Future<Directory> get getLocalPath;
 }
 
 class LocalDataSourceImpl implements LocalDataSource {
-  // run time cache
-  Map<String, CachedItem> cacheMap = <String, CachedItem>{};
-
   @override
-  Future<Item> getHomeData() async {
-    CachedItem? cachedItem = cacheMap[cacheHomeKey];
-
-    if (cachedItem != null && cachedItem.isValid(cacheHomeInterval)) {
-      // return the response from cache
-      return cachedItem.data;
-    } else {
-      // return an error that cache is not there or its not valid
-      throw Exception();
-      // throw ErrorHandler.handle(DataSource.cacheError);
+  Future createFolder() async {
+    if (await requestPermission(Permission.storage)) {
+      Directory directory = await getLocalPath;
+      if (!await directory.exists()) {
+        await directory.create(recursive: true);
+      }
     }
   }
 
   @override
-  Future<void> saveHomeToCache(Item homeResponse) async {
-    cacheMap[cacheHomeKey] = CachedItem(homeResponse);
+  Future<File?> saveFile(String fileName, pw.Document pdf) async {
+    if (await requestPermission(Permission.storage)) {
+      Directory directory = await getLocalPath;
+      if (!await directory.exists()) {
+        await directory.create(recursive: true);
+      }
+      if (await directory.exists()) {
+        final file = File('${directory.path}/$fileName.pdf');
+
+        final pdfFile = await file.writeAsBytes(await pdf.save());
+
+        return pdfFile;
+      }
+    }
+    return null;
   }
 
   @override
-  void clearCache() {
-    cacheMap.clear();
+  Future<bool> requestPermission(Permission permissions) async {
+    if (await permissions.isGranted) {
+      return true;
+    } else {
+      var result = await permissions.request();
+      if (result == PermissionStatus.granted) {
+        return true;
+      } else {
+        return false;
+      }
+    }
   }
 
   @override
-  void removeFromCache(String key) {
-    cacheMap.remove(key);
+  Future<Directory> get getLocalPath async {
+    Directory? directory = await getExternalStorageDirectory();
+    String newPath = "";
+    List<String> folders = directory!.path.split("/");
+
+    for (int x = 1; x < folders.length; x++) {
+      String folder = folders[x];
+      if (folder != "Android") {
+        newPath += "/" + folder;
+      } else {
+        break;
+      }
+    }
+    newPath = newPath + "/Pro CV";
+    directory = Directory(newPath);
+    return directory;
   }
-}
 
-class CachedItem {
-  dynamic data;
-  int cacheTime = DateTime.now().millisecondsSinceEpoch;
-  CachedItem(this.data);
-}
-
-extension CachedItemExtension on CachedItem {
-  bool isValid(int expirationTimeInMillis) {
-    int currentTimeInMillis = DateTime.now().millisecondsSinceEpoch;
-
-    bool isValid = currentTimeInMillis - cacheTime <= expirationTimeInMillis;
-
-    return isValid;
+  @override
+  Future<File> saveDocument({required pw.Document pdf}) async {
+    final bytes = await pdf.save();
+    final dir = await getApplicationDocumentsDirectory();
+    final file = File("${dir.path}/example.pdf");
+    await file.writeAsBytes(bytes);
+    return file;
   }
 }

@@ -7,12 +7,7 @@ import '../../../../../resources/values_manager.dart';
 
 const double width = 13.6 * PdfPageFormat.cm;
 const double width1 = 13.0 * PdfPageFormat.cm;
-
 const double height = 29.0 * PdfPageFormat.cm;
-//const double height1 = 4.0 * PdfPageFormat.cm;
-//const double height2 = 10.0 * PdfPageFormat.cm;
-//const double height3 = 9.0 * PdfPageFormat.cm;
-//const double height4 = 5.0 * PdfPageFormat.cm;
 
 pw.Container collegeArLeftColumn(
   pw.Font ttf,
@@ -48,7 +43,7 @@ pw.SizedBox buildFullName(
 ) {
   return pw.SizedBox(
       width: width1,
-      height: cvFormat.profileLine * PdfPageFormat.cm, //height1,
+      height: cvFormat.profileLine * PdfPageFormat.cm,
       child: pw.Column(mainAxisAlignment: pw.MainAxisAlignment.start, children: [
         pw.Align(
           alignment: pw.Alignment.topRight,
@@ -63,6 +58,7 @@ pw.SizedBox buildFullName(
           alignment: pw.Alignment.topRight,
           child: pw.Text(
             cvfile.profile,
+            style: const pw.TextStyle(color: PdfColors.grey800),
             textDirection: pw.TextDirection.rtl,
           ),
         )
@@ -76,7 +72,7 @@ pw.SizedBox buildWorkExperience(
 ) {
   return pw.SizedBox(
       width: width1,
-      height: cvFormat.workExperienceLines * PdfPageFormat.cm, //height2,
+      height: cvFormat.workExperienceLines * PdfPageFormat.cm,
       child: pw.Column(mainAxisAlignment: pw.MainAxisAlignment.start, children: [
         pw.Align(
             alignment: const pw.Alignment(0.6, 0),
@@ -103,7 +99,7 @@ pw.SizedBox buildEducationalQualifications(
 ) {
   return pw.SizedBox(
       width: width1,
-      height: cvFormat.educationalQualificationsLines * PdfPageFormat.cm, // height3,
+      height: cvFormat.educationalQualificationsLines * PdfPageFormat.cm,
       child: pw.Column(mainAxisAlignment: pw.MainAxisAlignment.start, children: [
         pw.Align(
             alignment: const pw.Alignment(0.6, 0),
@@ -130,7 +126,7 @@ pw.SizedBox buildExperienceAndSkills(
 ) {
   return pw.SizedBox(
     width: width1,
-    height: cvFormat.workExperienceLines * PdfPageFormat.cm, //height4,
+    height: cvFormat.workExperienceLines * PdfPageFormat.cm,
     child: pw.Column(mainAxisAlignment: pw.MainAxisAlignment.start, children: [
       pw.Align(
           alignment: const pw.Alignment(0.6, 0),

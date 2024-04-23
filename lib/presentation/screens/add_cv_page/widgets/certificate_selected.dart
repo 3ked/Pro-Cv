@@ -1,4 +1,4 @@
-import '../../../../app/var.dart';
+import '../../../../app/variables.dart';
 
 String buildCertificateSelected(String item, List listItem) {
   switch (listItem.indexOf(item)) {

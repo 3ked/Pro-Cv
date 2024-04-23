@@ -20,9 +20,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../../app/app_prefs.dart';
-import '../../../app/functions.dart';
-import '../../../app/var.dart';
-import '../../../data/data_source/internal_data_source.dart';
+import 'widgets/expansion_panel_widget.dart';
+import '../../../app/variables.dart';
+import '../../../data/data_source/local_data_source.dart';
 import '../../common/cv_generator/cv_pdf_generator.dart';
 import '../../resources/assets_manager.dart';
 import '../../resources/strings_manager.dart';
@@ -238,7 +238,7 @@ class _AddCvPageState extends State<AddCvPage> {
                           fontValue: context.read<CvThemeCubit>().state.fontValue,
                           font: context.read<FontCubit>().state,
                         );
-                        final cvPdf = await InternalDataSourceImpl().saveDocument(pdf: pdf);
+                        final cvPdf = await LocalDataSourceImpl().saveDocument(pdf: pdf);
                         openPdf(context, cvPdf);
                       }
                       if (file is Arguments) {
@@ -256,7 +256,7 @@ class _AddCvPageState extends State<AddCvPage> {
                             fontValue: context.read<CvThemeCubit>().state.fontValue,
                             font: context.read<FontCubit>().state,
                           );
-                          final cvPdf = await InternalDataSourceImpl().saveDocument(pdf: pdf);
+                          final cvPdf = await LocalDataSourceImpl().saveDocument(pdf: pdf);
                           openPdf(context, cvPdf);
                         }
                       }

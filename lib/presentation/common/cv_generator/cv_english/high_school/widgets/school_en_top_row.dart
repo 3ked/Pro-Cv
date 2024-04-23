@@ -112,7 +112,6 @@ pw.SizedBox buildImage(
                       style: pw.TextStyle(
                         color: pdfFontColor,
                       ),
-                      textDirection: pw.TextDirection.rtl,
                     ),
                   ]),
             )
@@ -132,7 +131,6 @@ pw.SizedBox buildFullName(
       alignment: pw.Alignment.centerLeft,
       child: pw.Text(
         cvfile.fullName,
-        textDirection: pw.TextDirection.rtl,
         style: pw.TextStyle(
             font: ttf,
             fontSize: cvFormat.fullNameFontSize,
@@ -219,7 +217,6 @@ pw.SizedBox buildPersonalInformation(
                       ),
                       pw.Text(
                         cvfile.homeAdress,
-                        textDirection: pw.TextDirection.rtl,
                         style: pw.TextStyle(
                           color: pdfFontColor,
                         ),
@@ -239,7 +236,6 @@ pw.SizedBox buildPersonalInformation(
                     ),
                     pw.Text(
                       cvfile.website,
-                      textDirection: pw.TextDirection.rtl,
                       style: pw.TextStyle(
                         color: pdfFontColor,
                       ),

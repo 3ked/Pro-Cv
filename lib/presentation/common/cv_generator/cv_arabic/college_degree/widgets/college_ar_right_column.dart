@@ -10,14 +10,11 @@ import '../../../../../resources/constants_manager.dart';
 const double width = 6.0 * PdfPageFormat.cm;
 const double width1 = 5.5 * PdfPageFormat.cm;
 const double widthPhoto = 4.0 * PdfPageFormat.cm;
+////////////////////////////////
 const double heightPhoto = 4.0 * PdfPageFormat.cm;
-
 const double height = 29.0 * PdfPageFormat.cm;
 const double height1 = 6.0 * PdfPageFormat.cm;
 const double height2 = 6.0 * PdfPageFormat.cm;
-//const double height3 = 5.0 * PdfPageFormat.cm;
-//const double height4 = 7.0 * PdfPageFormat.cm;
-//const double height5 = 6.0 * PdfPageFormat.cm;
 
 pw.Container collegeArRightColumn(
   Uint8List image,
@@ -238,7 +235,7 @@ pw.SizedBox buildInterestsAndHobbies(
 ) {
   return pw.SizedBox(
     width: width1,
-    height: cvFormat.interestsAndHobbiesLines * PdfPageFormat.cm, //height5,
+    height: cvFormat.interestsAndHobbiesLines * PdfPageFormat.cm,
     child: pw.Column(mainAxisAlignment: pw.MainAxisAlignment.start, children: [
       pw.Center(
           child: pw.Text(

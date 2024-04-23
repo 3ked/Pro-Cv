@@ -14,9 +14,6 @@ const double heightPhoto = 4.0 * PdfPageFormat.cm;
 const double height = 29.0 * PdfPageFormat.cm;
 const double height1 = 6.0 * PdfPageFormat.cm;
 const double height2 = 6.0 * PdfPageFormat.cm;
-// const double height3 = 5.0 * PdfPageFormat.cm;
-// const double height4 = 7.0 * PdfPageFormat.cm;
-// const double height5 = 6.0 * PdfPageFormat.cm;
 
 pw.Container collegeEnLeftColumn(
   Uint8List image,
@@ -153,7 +150,6 @@ pw.SizedBox buildPersonalInformation(
               font: icon2),
           pw.Text(
             cvfile.ageAndMaritalStatus,
-            textDirection: pw.TextDirection.rtl,
             style: pw.TextStyle(
               color: pdfFontColor,
             ),
@@ -170,7 +166,7 @@ pw.SizedBox buildLanguages(
 ) {
   return pw.SizedBox(
       width: width1,
-      height: cvFormat.languagesLines * PdfPageFormat.cm, //height3,
+      height: cvFormat.languagesLines * PdfPageFormat.cm,
       child: pw.Column(mainAxisAlignment: pw.MainAxisAlignment.start, children: [
         pw.Center(
             child: pw.Text(
@@ -183,11 +179,9 @@ pw.SizedBox buildLanguages(
             alignment: pw.Alignment.topLeft,
             child: pw.Text(
               cvfile.languages,
-              textDirection: pw.TextDirection.rtl,
               style: pw.TextStyle(
                 color: pdfFontColor,
               ),
-              // textDirection: pw.TextDirection.rtl,
             )),
       ]));
 }
@@ -200,7 +194,7 @@ pw.SizedBox buildAchievements(
 ) {
   return pw.SizedBox(
       width: width1,
-      height: cvFormat.achievementsLines * PdfPageFormat.cm, //height4,
+      height: cvFormat.achievementsLines * PdfPageFormat.cm,
       child: pw.Column(mainAxisAlignment: pw.MainAxisAlignment.start, children: [
         pw.Center(
             child: pw.Text(
@@ -210,10 +204,9 @@ pw.SizedBox buildAchievements(
         )),
         pw.Divider(color: pdfFontColor),
         pw.Align(
-            alignment: pw.Alignment.centerLeft,
+            alignment: pw.Alignment.topLeft,
             child: pw.Text(
               cvfile.achievements,
-              textDirection: pw.TextDirection.rtl,
               style: pw.TextStyle(
                 color: pdfFontColor,
               ),
@@ -229,7 +222,7 @@ pw.SizedBox buildInterestsAndHobbies(
 ) {
   return pw.SizedBox(
     width: width1,
-    height: cvFormat.interestsAndHobbiesLines * PdfPageFormat.cm, //height5,
+    height: cvFormat.interestsAndHobbiesLines * PdfPageFormat.cm,
     child: pw.Column(mainAxisAlignment: pw.MainAxisAlignment.start, children: [
       pw.Center(
           child: pw.Text(
@@ -239,10 +232,9 @@ pw.SizedBox buildInterestsAndHobbies(
       )),
       pw.Divider(color: pdfFontColor),
       pw.Align(
-        alignment: pw.Alignment.centerLeft,
+        alignment: pw.Alignment.topLeft,
         child: pw.Text(
           cvfile.interestsAndHobbies,
-          textDirection: pw.TextDirection.rtl,
           style: pw.TextStyle(
             color: pdfFontColor,
           ),
